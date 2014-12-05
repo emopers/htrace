@@ -2,8 +2,8 @@ HTrace
 ======
 HTrace is a tracing framework intended for use with distributed systems written in java.
 
-The project WAS hosted here at http://github.com/cloudera/htrace but as of
-December 2014, it has moved to Apache Incubator.  Go to
+<b>The project WAS hosted here at http://github.com/cloudera/htrace but as of
+December 2014, it has moved to Apache Incubator</b>.  Go to
 http://incubator.apache.org/projects/htrace and http://htrace.incubator.apache.org
 from here on out.
 
