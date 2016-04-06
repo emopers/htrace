@@ -98,9 +98,10 @@ public class TraceCreator {
 
   private void importantWork1() {
     TraceScope cur = Trace.startSpan("important work 1");
+    Random r = new Random();
     try {
-      Thread.sleep((long) (2000 * Math.random()));
-      importantWork2();
+      Thread.sleep((long) (r.nextInt(2000)));
+      importantWork2(r);
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
     } finally {
@@ -108,10 +109,10 @@ public class TraceCreator {
     }
   }
 
-  private void importantWork2() {
+  private void importantWork2(Random r) {
     TraceScope cur = Trace.startSpan("important work 2");
     try {
-      Thread.sleep((long) (2000 * Math.random()));
+      Thread.sleep((long) (r.nextInt(2000)));
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
     } finally {
@@ -122,9 +123,9 @@ public class TraceCreator {
   private class MyRunnable implements Runnable {
     @Override
     public void run() {
+      Random r = new Random();
       try {
         Thread.sleep(750);
-        Random r = new Random();
         int importantNumber = 100 / r.nextInt(3);
         System.out.println("Important number: " + importantNumber);
       } catch (InterruptedException ie) {
@@ -132,7 +133,7 @@ public class TraceCreator {
       } catch (ArithmeticException ae) {
         TraceScope c = Trace.startSpan("dealing with arithmetic exception.");
         try {
-          Thread.sleep((long) (3000 * Math.random()));
+          Thread.sleep((long) (r.nextInt(3000)));
         } catch (InterruptedException ie1) {
           Thread.currentThread().interrupt();
         } finally {
